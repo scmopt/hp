@@ -58,6 +58,7 @@ export const Header = () => {
 export const HeroSection = () => {
   return (
     <section 
+      id="home"
       className="relative h-screen flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1467806757054-808649965a76')`
