@@ -1,5 +1,209 @@
 import React, { useState } from 'react';
 
+// Contact Modal Component
+export const ContactModal = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Mock API call - simulate form submission
+    setTimeout(() => {
+      console.log('Form submitted:', formData);
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      
+      // Reset form after 2 seconds and close modal
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          subject: '',
+          message: ''
+        });
+        setSubmitSuccess(false);
+        onClose();
+      }, 2000);
+    }, 1000);
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+          <h2 className="text-2xl font-bold text-teal-700">お問い合わせ</h2>
+          <button
+            onClick={onClose}
+            className="text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="p-6">
+          {submitSuccess ? (
+            <div className="text-center py-8">
+              <div className="text-green-600 mb-4">
+                <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">送信完了</h3>
+              <p className="text-gray-600">お問い合わせありがとうございます。<br />担当者より3営業日以内にご連絡いたします。</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    お名前 <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="山田 太郎"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    メールアドレス <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="example@company.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  会社名
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                  placeholder="株式会社○○"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  件名 <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="subject"
+                  name="subject"
+                  required
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                >
+                  <option value="">件名を選択してください</option>
+                  <option value="product-inquiry">製品・サービスについて</option>
+                  <option value="demo-request">デモのご依頼</option>
+                  <option value="pricing">料金・プランについて</option>
+                  <option value="partnership">パートナーシップについて</option>
+                  <option value="support">技術サポート</option>
+                  <option value="other">その他</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  メッセージ <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-vertical"
+                  placeholder="お問い合わせ内容をご記入ください。&#10;&#10;例：&#10;・導入を検討しており、デモを希望します&#10;・料金体系について教えてください&#10;・技術的な質問があります"
+                />
+              </div>
+
+              <div className="bg-gray-50 p-4 rounded-md">
+                <p className="text-sm text-gray-600">
+                  ご入力いただいた個人情報は、お問い合わせへの対応にのみ使用いたします。
+                  <br />
+                  詳しくは<a href="#" className="text-teal-600 hover:text-teal-700 underline">プライバシーポリシー</a>をご確認ください。
+                </p>
+              </div>
+
+              <div className="flex justify-end space-x-4">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  キャンセル
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-6 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      送信中...
+                    </>
+                  ) : (
+                    '送信する'
+                  )}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // Header Component
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
