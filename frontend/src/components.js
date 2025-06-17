@@ -106,7 +106,7 @@ export const WhyWeStandOut = () => {
 // MOAI Platform Section
 export const MOAIPlatformSection = () => {
   return (
-    <section className="py-16 bg-white">
+    <section id="platform" className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center text-teal-700 mb-12">MOAI Platform</h2>
         
