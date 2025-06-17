@@ -18,27 +18,11 @@ export const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <a href="#home" className="text-gray-700 hover:text-teal-700 transition-colors">Home</a>
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-teal-700 transition-colors flex items-center">
-                Solutions <span className="ml-1">▼</span>
-              </button>
-            </div>
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-teal-700 transition-colors flex items-center">
-                Products <span className="ml-1">▼</span>
-              </button>
-            </div>
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-teal-700 transition-colors flex items-center">
-                Resources <span className="ml-1">▼</span>
-              </button>
-            </div>
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-teal-700 transition-colors flex items-center">
-                About <span className="ml-1">▼</span>
-              </button>
-            </div>
-            <a href="#english" className="text-gray-700 hover:text-teal-700 transition-colors">English</a>
+            <a href="#solutions" className="text-gray-700 hover:text-teal-700 transition-colors">Solutions</a>
+            <a href="#platform" className="text-gray-700 hover:text-teal-700 transition-colors">Products</a>
+            <a href="#pricing" className="text-gray-700 hover:text-teal-700 transition-colors">Resources</a>
+            <a href="#team" className="text-gray-700 hover:text-teal-700 transition-colors">About</a>
+            <a href="#news" className="text-gray-700 hover:text-teal-700 transition-colors">English</a>
           </nav>
 
           {/* Mobile menu button */}
