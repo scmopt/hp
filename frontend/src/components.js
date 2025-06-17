@@ -42,10 +42,10 @@ export const Header = () => {
             <div className="flex flex-col space-y-2">
               <a href="#home" className="text-gray-700 hover:text-teal-700 transition-colors py-2">Home</a>
               <a href="#solutions" className="text-gray-700 hover:text-teal-700 transition-colors py-2">Solutions</a>
-              <a href="#products" className="text-gray-700 hover:text-teal-700 transition-colors py-2">Products</a>
-              <a href="#resources" className="text-gray-700 hover:text-teal-700 transition-colors py-2">Resources</a>
-              <a href="#about" className="text-gray-700 hover:text-teal-700 transition-colors py-2">About</a>
-              <a href="#english" className="text-gray-700 hover:text-teal-700 transition-colors py-2">English</a>
+              <a href="#platform" className="text-gray-700 hover:text-teal-700 transition-colors py-2">Products</a>
+              <a href="#pricing" className="text-gray-700 hover:text-teal-700 transition-colors py-2">Resources</a>
+              <a href="#team" className="text-gray-700 hover:text-teal-700 transition-colors py-2">About</a>
+              <a href="#news" className="text-gray-700 hover:text-teal-700 transition-colors py-2">English</a>
             </div>
           </div>
         )}
