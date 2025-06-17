@@ -225,7 +225,7 @@ export const OptimizationSolutions = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-100">
+    <section id="solutions" className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center text-teal-700 mb-12">Optimization Solutions</h2>
         
