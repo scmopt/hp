@@ -9,7 +9,8 @@ import {
   PlansAndPricing,
   OurTeam,
   NewsSection,
-  Footer
+  Footer,
+  ContactModal
 } from "./components";
 
 function App() {
