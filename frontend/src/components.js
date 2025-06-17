@@ -479,21 +479,33 @@ export const OptimizationSolutions = () => {
 
 // Plans and Pricing Section
 export const PlansAndPricing = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
   return (
-    <section id="pricing" className="py-16 bg-white">
-      <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-teal-700 mb-8">Plans and Pricing</h2>
-        
-        <p className="text-lg mb-4">クラウドサービス、API利用、オンプレミス対応可能</p>
-        <p className="text-gray-600 mb-8">
-          企業規模や目的を行てい利用したいただくことに柔軟なプランをご服装いしております。詳細および気にお願いおありください。
-        </p>
-        
-        <button className="bg-teal-700 text-white px-8 py-3 rounded-lg hover:bg-teal-800 transition-colors font-semibold">
-          お問い合わせ
-        </button>
-      </div>
-    </section>
+    <>
+      <section id="pricing" className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-teal-700 mb-8">Plans and Pricing</h2>
+          
+          <p className="text-lg mb-4">クラウドサービス、API利用、オンプレミス対応可能</p>
+          <p className="text-gray-600 mb-8">
+            企業規模や目的を行てい利用したいただくことに柔軟なプランをご服装いしております。詳細および気にお願いおありください。
+          </p>
+          
+          <button 
+            onClick={() => setIsContactModalOpen(true)}
+            className="bg-teal-700 text-white px-8 py-3 rounded-lg hover:bg-teal-800 transition-colors font-semibold"
+          >
+            お問い合わせ
+          </button>
+        </div>
+      </section>
+
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
+    </>
   );
 };
 
