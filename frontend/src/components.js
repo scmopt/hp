@@ -276,7 +276,7 @@ export const OptimizationSolutions = () => {
 // Plans and Pricing Section
 export const PlansAndPricing = () => {
   return (
-    <section className="py-16 bg-white">
+    <section id="pricing" className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-teal-700 mb-8">Plans and Pricing</h2>
         
